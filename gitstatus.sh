@@ -38,7 +38,7 @@ function gitStatus() {
     title "$titleStr"
 
     # header
-    header="$header - [A] Added, ready for commit [M] Modified [AM] New [??] Untracked"
+    header="$header - [A ] Added stagged [M ] Modified and stagged [ M] Modified not stagged [AM] New [??] Untracked"
     smallBlock "$blockColor" "$header"
 
     # do not loop on each files, write all files at first loop, but i don't know how to write it better
