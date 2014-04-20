@@ -38,8 +38,10 @@ function gitStatus() {
     title "$titleStr"
 
     # header
-    header="$header - [A ] Added stagged [M ] Modified and stagged [ M] Modified not stagged [AM] New [??] Untracked"
     smallBlock "$blockColor" "$header"
+    if [ $showLegend = true ]; then 
+        echo "[A ] Added stagged [M ] Modified and stagged [D ] Deleted and stagged [ M] Modified not stagged [AM] New [??] Untracked"
+    fi
 
     # do not loop on each files, write all files at first loop, but i don't know how to write it better
     for file in "$allFiles"; do
@@ -82,12 +84,13 @@ rootLength=${#root}
 paths="$(pwd)"
 pathErrors=true
 searchGitReposSubDirs=true
+showLegend=true
 
 for param in $*; do
     # -path=[yes/no]
     if [ ${param:0:6} = '-path=' ]; then
         paramValue="${param:6}"
-        paths="$paths,${paramValue//\%pwd\%/$root}"
+        paths="${paramValue//\%pwd\%/$root}"
 
     # -path-errors=[yes/no]
     elif [ "$param" = "-path-errors=no" ]; then
@@ -96,6 +99,10 @@ for param in $*; do
     # -sub-dirs=[yes/no]
     elif [ $param = '-sub-dirs=no' ]; then
         searchGitReposSubDirs=false
+
+    # -show-legend=[yes/no]
+    elif [ $param = '-show-legend=no' ]; then
+        showLegend=false
     fi
 done
 
