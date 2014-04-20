@@ -21,7 +21,7 @@ Parameters :
     -path-errors=[YES/no]
         Indicate if you want to show an error when a directory defined by -path if not a valid directory
         
-    -show-legen[YES/no]
+    -show-legend=[YES/no]
         Show git symbols legend (like [ M] Modified, etc)
 
 Example when you want to scan on a composer project :
