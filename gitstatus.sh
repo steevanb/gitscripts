@@ -2,14 +2,23 @@
 
 source "$(dirname $0)/functions.sh"
 
+function realGitStatus() {
+    cd $1
+
+    title "$1"
+    smallBlock "41" "$gitBranch"
+
+    git status
+}
+
 ################################################################################
 
-function gitStatus() {
-    gitBranch=$(getGitBranch)
+function customGitStatus() {
+    cd $1
+
     header="$gitBranch"
 
     # get files to commits
-    cd $1
     allFiles="$(git status --porcelain)"
 
     # commits not pushed
@@ -40,50 +49,40 @@ function gitStatus() {
     # header
     smallBlock "$blockColor" "$header"
     if [ $showLegend = true ]; then 
-        echo "[A ] Added stagged [M ] Modified and stagged [D ] Deleted and stagged [ M] Modified not stagged [AM] New [??] Untracked"
+        echo -e "[A] Added [M] Modified [D] Deleted [R] Renamed [C] Copied [U] Updated but unmerged [??] Untracked [\033[32mstagged\033[00m] [\033[31mnot stagged\033[00m]"
     fi
 
-    # do not loop on each files, write all files at first loop, but i don't know how to write it better
-    for file in "$allFiles"; do
-        echo "$file"
+    git status --porcelain|while read; do
+        fileStatus=${REPLY:0:3}
+        if [ "$fileStatus" = 'A  ' ] || [ "$fileStatus" = 'M  ' ] || [ "$fileStatus" = 'D  ' ] || [ "$fileStatus" = 'R  ' ] || [ "$fileStatus" = 'C  ' ] || [ "$fileStatus" = 'U  ' ]; then
+            echo -e "\033[32m$REPLY\033[00m"
+        elif [ "$fileStatus" = ' A ' ] || [ "$fileStatus" = ' M ' ] || [ "$fileStatus" = ' D ' ] || [ "$fileStatus" = ' R ' ] || [ "$fileStatus" = ' C ' ] || [ "$fileStatus" = ' U ' ]; then
+            echo -e "\033[31m$REPLY\033[00m"
+        else
+            echo -e "\033[33m$REPLY\033[00m"
+        fi
     done
 }
 
 ################################################################################
 
-function searchGitRepos() {
-    if [ ! -d "$1" ]; then
-        if [ "$pathErrors" = true ]; then
-            block 41 "$1 is not a valid directory"
-        fi
-        return 0
-    fi
+function gitStatus() {
+    gitBranch=$(getGitBranch)
 
-    cd "$1"
-    
-    # git repository
-    gitFound=false
-    if [ -d "$1/.git" ]; then
-        gitStatus "$1"
-        gitFound=true
-    fi
-
-    # search git repository in sub dirs
-    if [ $searchGitReposSubDirs = true ] || [ $gitFound = false ]; then
-        newPaths="$(ls -d */ 2>/dev/null)"
-        for newPath in $newPaths; do
-            searchGitRepos "$1/${newPath:0:-1}"
-        done
+    if [ "${gitBranch:0:13}" = "detached from" ]; then
+        realGitStatus "$1"
+    else
+        customGitStatus "$1"
     fi
 }
 
 ################################################################################
 
+
+
 root=$(pwd)
 rootLength=${#root}
-paths="$(pwd)"
-pathErrors=true
-searchGitReposSubDirs=true
+paths=root
 showLegend=true
 
 for param in $*; do
@@ -91,14 +90,6 @@ for param in $*; do
     if [ ${param:0:6} = '-path=' ]; then
         paramValue="${param:6}"
         paths="${paramValue//\%pwd\%/$root}"
-
-    # -path-errors=[yes/no]
-    elif [ "$param" = "-path-errors=no" ]; then
-        pathErrors=false
-
-    # -sub-dirs=[yes/no]
-    elif [ $param = '-sub-dirs=no' ]; then
-        searchGitReposSubDirs=false
 
     # -show-legend=[yes/no]
     elif [ $param = '-show-legend=no' ]; then
@@ -108,5 +99,7 @@ done
 
 arPath=$(echo $paths | tr "," "\n")
 for path in $arPath; do
-    searchGitRepos "$path"
+    find $path -type d -name .git|while read; do
+        gitStatus "$(dirname $REPLY)"
+    done
 done
