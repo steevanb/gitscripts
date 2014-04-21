@@ -82,7 +82,7 @@ function gitStatus() {
 
 root=$(pwd)
 rootLength=${#root}
-paths=root
+paths=$root
 showLegend=true
 
 for param in $*; do
