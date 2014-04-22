@@ -3,8 +3,6 @@
 source "$(dirname $0)/functions.sh"
 
 function realGitStatus() {
-    cd $1
-
     title "$1"
     smallBlock "41" "$gitBranch"
 
@@ -14,8 +12,6 @@ function realGitStatus() {
 ################################################################################
 
 function customGitStatus() {
-    cd $1
-
     header="$gitBranch"
 
     # get files to commits
@@ -56,7 +52,7 @@ function customGitStatus() {
         fileStatus=${REPLY:0:3}
         if [ "$fileStatus" = 'A  ' ] || [ "$fileStatus" = 'M  ' ] || [ "$fileStatus" = 'D  ' ] || [ "$fileStatus" = 'R  ' ] || [ "$fileStatus" = 'C  ' ] || [ "$fileStatus" = 'U  ' ]; then
             echo -e "\033[32m$REPLY\033[00m"
-        elif [ "$fileStatus" = ' A ' ] || [ "$fileStatus" = ' M ' ] || [ "$fileStatus" = ' D ' ] || [ "$fileStatus" = ' R ' ] || [ "$fileStatus" = ' C ' ] || [ "$fileStatus" = ' U ' ]; then
+        elif [ "$fileStatus" = ' A ' ] || [ "$fileStatus" = ' M ' ] || [ "$fileStatus" = ' D ' ] || [ "$fileStatus" = ' R ' ] || [ "$fileStatus" = ' C ' ] || [ "$fileStatus" = ' U ' ] || [ "$fileStatus" = '?? ' ]; then
             echo -e "\033[31m$REPLY\033[00m"
         else
             echo -e "\033[33m$REPLY\033[00m"
@@ -67,6 +63,7 @@ function customGitStatus() {
 ################################################################################
 
 function gitStatus() {
+    cd $1
     gitBranch=$(getGitBranch)
 
     if [ "${gitBranch:0:13}" = "detached from" ]; then
