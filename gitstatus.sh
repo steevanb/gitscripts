@@ -66,7 +66,7 @@ function gitStatus() {
     cd $1
     gitBranch=$(getGitBranch)
 
-    if [ "${gitBranch:0:13}" = "detached from" ] || [ "${gitBranch:0:17}" = "HEAD détachée sur" ]; then
+    if [ "${gitBranch:0:13}" = "detached from" ] || [ "${gitBranch:0:10}" = "détaché de" ]; then
         realGitStatus "$1"
     else
         customGitStatus "$1"
