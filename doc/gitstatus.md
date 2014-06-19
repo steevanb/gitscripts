@@ -14,3 +14,4 @@ Parameters
 -show-legend=[YES/no]
     Show git symbols legend (like [M] Modified, etc)
     yes by default
+´´´
