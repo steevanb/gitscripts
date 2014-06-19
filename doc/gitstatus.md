@@ -16,3 +16,5 @@ Parameters
     Show git symbols legend (like [M] Modified, etc)
     yes by default
 ```
+
+[Back to index](../README.md)
