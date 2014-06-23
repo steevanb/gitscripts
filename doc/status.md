@@ -1,5 +1,5 @@
-gitstatus.sh
-============
+status.sh
+=========
 
 status.sh allows you to execute git status on each repository under current directory.
 
