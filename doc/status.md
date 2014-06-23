@@ -1,7 +1,7 @@
 gitstatus.sh
 ============
 
-gitstatus.sh allows you to execute git status on each repository under current directory.
+status.sh allows you to execute git status on each repository under current directory.
 
 Parameters
 ----------
@@ -16,5 +16,12 @@ Parameters
     Show git symbols legend (like [M] Modified, etc)
     yes by default
 ```
+
+Example
+-------
+```
+./status.sh
+./status.sh -path=/foo
+./status.sh -path=/foo,%pwd%/bar -show-legend=no
 
 [Back to index](../README.md)
