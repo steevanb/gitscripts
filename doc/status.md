@@ -23,5 +23,6 @@ Example
 ./status.sh
 ./status.sh -path=/foo
 ./status.sh -path=/foo,%pwd%/bar -show-legend=no
+```
 
 [Back to index](../README.md)
