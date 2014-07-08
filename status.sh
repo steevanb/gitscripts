@@ -26,7 +26,7 @@ function customGitStatus() {
     fi
 
     # nothing to commit / push, don't show this block
-    if [ "$allFiles" == "" ] && [ "$commitsToPush" == "" ]; then
+    if [ "$allFiles" == "" ] && [ "$commitsToPush" == "" ] && [ $showUpToDate == false ]; then
         return 0;
     fi
 
@@ -73,6 +73,7 @@ root=$(pwd)
 rootLength=${#root}
 paths=$root
 showLegend=true
+showUpToDate=false
 
 for param in $*; do
     # -path=[yes/no]
@@ -83,6 +84,10 @@ for param in $*; do
     # -show-legend=[yes/no]
     elif [ $param = '-show-legend=no' ]; then
         showLegend=false
+
+    # -show-uptodate=[yes/no]
+    elif [ $param = '-show-uptodate=yes' ]; then
+        showUpToDate=true
     fi
 done
 

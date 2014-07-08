@@ -15,6 +15,11 @@ Parameters
 -show-legend=[YES/no]
     Show git symbols legend (like [M] Modified, etc)
     yes by default
+
+-show-uptodate=[yes/NO]
+    Show repositories without files to commit and commit to push
+    Can be used to verify this script find all your repositories, for example
+    no by default
 ```
 
 Example
@@ -23,6 +28,7 @@ Example
 ./status.sh
 ./status.sh -path=/foo
 ./status.sh -path=/foo,%pwd%/bar -show-legend=no
+./status.sh -path=/foo,%pwd%/bar -show-legend=no -show-uptodate=yes
 ```
 
 [Back to index](../README.md)
