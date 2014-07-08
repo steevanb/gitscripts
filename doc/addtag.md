@@ -17,7 +17,7 @@ $message
 Example
 -------
 ```
-./addtags.sh 1.0.0 "My tag description"
+./addtag.sh 1.0.0 "My tag description"
 ```
 
 [Back to index](../README.md)
