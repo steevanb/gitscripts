@@ -9,8 +9,6 @@ function realGitStatus() {
     git status
 }
 
-################################################################################
-
 function customGitStatus() {
     header="$gitBranch"
 
@@ -60,8 +58,6 @@ function customGitStatus() {
     done
 }
 
-################################################################################
-
 function gitStatus() {
     cd $1
     gitBranch=$(getGitBranch)
@@ -72,10 +68,6 @@ function gitStatus() {
         customGitStatus "$1"
     fi
 }
-
-################################################################################
-
-
 
 root=$(pwd)
 rootLength=${#root}
@@ -96,7 +88,7 @@ done
 
 arPath=$(echo $paths | tr "," "\n")
 for path in $arPath; do
-    find $path -type d -name .git|while read; do
+    find -L $path -type d -name .git|while read; do
         gitStatus "$(dirname $REPLY)"
     done
 done
