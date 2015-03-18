@@ -63,7 +63,9 @@ function gitStatus() {
     gitBranch=$(getGitBranch)
 
     if [ "${gitBranch:0:13}" = "detached from" ] || [ "${gitBranch:0:10}" = "détaché de" ]; then
-        realGitStatus "$1"
+        if [ $showDetached == true ]; then
+            realGitStatus "$1"
+        fi
     else
         customGitStatus "$1"
     fi
@@ -74,6 +76,7 @@ rootLength=${#root}
 paths=$root
 showLegend=true
 showUpToDate=false
+showDetached=true
 
 for param in $*; do
     # -path=[yes/no]
@@ -88,6 +91,10 @@ for param in $*; do
     # -show-uptodate=[yes/no]
     elif [ $param = '-show-uptodate=yes' ]; then
         showUpToDate=true
+
+    # -show-detached=[yes/no]
+    elif [ $param = '-show-detached=no' ]; then
+        showDetached=false
     fi
 done
 
