@@ -21,7 +21,7 @@ Parameters
     Can be used to verify this script find all your repositories, for example
     no by default
     
--maxdepth=1000
+-max-depth=1000
     Descend at most X levels of directories
     1000 by default
 ```
