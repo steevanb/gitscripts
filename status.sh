@@ -77,6 +77,7 @@ paths=$root
 showLegend=true
 showUpToDate=false
 showDetached=true
+maxdepth=1000
 
 for param in $*; do
     # -path=[yes/no]
@@ -95,12 +96,16 @@ for param in $*; do
     # -show-detached=[yes/no]
     elif [ $param = '-show-detached=no' ]; then
         showDetached=false
+
+    # -recursive=[YES/no]
+    elif [ ${param:0:10} = '-maxdepth=' ]; then
+        maxdepth="${param:10}"
     fi
 done
 
 arPath=$(echo $paths | tr "," "\n")
 for path in $arPath; do
-    find -L $path -type d -name .git|while read; do
+    find -L $path -maxdepth $maxdepth -type d -name .git|while read; do
         gitStatus "$(dirname $REPLY)"
     done
 done
