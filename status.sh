@@ -98,8 +98,8 @@ for param in $*; do
         showDetached=false
 
     # -recursive=[YES/no]
-    elif [ ${param:0:10} = '-maxdepth=' ]; then
-        maxdepth="${param:10}"
+    elif [ ${param:0:11} = '-max-depth=' ]; then
+        maxdepth="${param:11}"
     fi
 done
 
