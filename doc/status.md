@@ -20,6 +20,10 @@ Parameters
     Show repositories without files to commit and commit to push
     Can be used to verify this script find all your repositories, for example
     no by default
+    
+-maxdepth=1000
+    Descend at most X levels of directories
+    1000 by default
 ```
 
 Example
