@@ -14,12 +14,7 @@ else
 fi
 
 title "Create tag $tag"
-echo "$ git tag -a '${tag}' -m '${message}'"
-git tag -a "$tag" -m "$message"
-[ "$?" != "0" ] && cancelScript ""
-
-title "Push all tags"
+execCmd "git tag -a ${tag} -m ${message}"
 execCmd "git push --tags"
 
-echo ""
 echoOk

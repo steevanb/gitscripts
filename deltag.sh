@@ -10,9 +10,6 @@ tag=$1
 
 title "Delete tag $tag"
 execCmd "git tag -d $tag"
-
-title "Push deleted tag"
 execCmd "git push origin :refs/tags/$tag"
 
-echo ""
 echoOk

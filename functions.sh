@@ -13,11 +13,11 @@ function block() {
 }
 
 function echoOk() {
-    echo -e "[\033[32m OK \033[00m]";
+    echo -en "\n[\033[32m OK \033[00m]\n";
 }
 
 function execCmd() {
-    echo -en "\033[45m\033[1;37m$ $1\033[0m\n"
+    echo -en "\n\033[45m\033[1;37m$ $1\033[0m\n"
     execCmdNoEcho "$1" "$2"
 }
 
