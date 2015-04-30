@@ -14,4 +14,4 @@ Available scripts
 
 [push.sh](doc/push.md) : push only the current branch to origin
 
-[rebase.sh](doc/push.md) : rebase from another remote/branch
+[rebase.sh](doc/rebase.md) : rebase from another remote/branch
