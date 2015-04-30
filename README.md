@@ -13,3 +13,5 @@ Available scripts
 [deltag.sh](doc/deltag.md) : delete a tag, and push only deleted tag
 
 [push.sh](doc/push.md) : push only the current branch to origin
+
+[rebase.sh](doc/push.md) : rebase from another remote/branch
