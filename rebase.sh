@@ -23,7 +23,11 @@ if [ "$gitBranch" == "" ]; then
 fi
 
 editedFiles="$(git status --porcelain)"
-countEditedFiles="${#editedFiles[@]}"
+if [ "$editedFiles" == "" ]; then
+    countEditedFiles=0
+else
+    countEditedFiles="${#editedFiles[@]}"
+fi
 
 if [ "$stash" == "ask" ] && [ "$countEditedFiles" -gt "0" ]; then
     ask "Repository contains unstaged changes. Do you want to stash them ? (Y/n)"
