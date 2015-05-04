@@ -35,6 +35,7 @@ if [ "$stash" == "ask" ] && [ "$countEditedFiles" -gt "0" ]; then
     if [ "$readStash" == "" ] || [ "$readStash" == "y" ] || [ "$readStash" == "Y" ]; then
         stash="yes"
     fi
+    echo ""
 fi
 if [ "$countEditedFiles" -gt "0" ] && [ "$stash" == "yes" ]; then
     execCmd "git stash"
