@@ -1,5 +1,7 @@
 #!/bin/bash
 
+autoNewLine=false
+
 function block() {
     titleLength=${#2}
     echo -en "\n\033[$1m\033[1;37m    "
@@ -17,13 +19,18 @@ function echoOk() {
 }
 
 function execCmd() {
-    echo -en "\n\033[45m\033[1;37m$ $1\033[0m\n"
-    execCmdNoEcho "$1" "$2"
+    if [[ ( "$3" == "" && $autoNewLine == true ) || $3 == true ]]; then
+        echo ""
+    fi
+    echo -en "\033[45m\033[1;37m$ $1\033[0m\n"
+    execCmdNoEcho "$1" "$2" false
 }
 
 function execCmdNoEcho() {
     $1
     [ "$?" != "0" ] && cancelScript "$2"
+
+    autoNewLine=true
 }
 
 function smallBlock() {
@@ -32,6 +39,7 @@ function smallBlock() {
 
 function title() {
     block 46 "$1"
+    autoNewLine=false
 }
 
 function getGitBranch() {
