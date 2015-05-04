@@ -8,6 +8,11 @@ if [ "$gitBranch" == "" ]; then
 fi
 
 title "Push branch $gitBranch to origin"
-execCmd "git push $* origin $gitBranch"
+if [ "$*" == "" ]; then
+    parameters=""
+else
+    parameters=" $*"
+fi
+execCmd "git push$parameters origin $gitBranch"
 
 echoOk
