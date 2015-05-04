@@ -1,0 +1,13 @@
+{
+    "name": "steevanb/gitscripts",
+    "license": "MIT",
+    "type": "scripts",
+    "description": "Scripts for git",
+    "minimum-stability": "dev",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/steevanb/gitscripts.git"
+        }
+    ]
+}
