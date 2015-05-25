@@ -21,6 +21,10 @@ Parameters
     Can be used to verify this script find all your repositories, for example
     no by default
     
+-show-detached=[YES/no]
+    Show detached repositories (yes) or not (no)
+    yes by default
+    
 -max-depth=1000
     Descend at most X levels of directories
     1000 by default
