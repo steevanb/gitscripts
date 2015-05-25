@@ -3,7 +3,7 @@ gitscripts
 
 Some scripts to help you using git.
 
-See [changelog](doc/changelog.md).
+[changelog](doc/changelog.md)
 
 Available scripts
 -----------------
