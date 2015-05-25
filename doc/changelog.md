@@ -1,3 +1,9 @@
+master
+======
+
+- [[changelog.md](changelog.md)] Add changelog
+- [[status.sh](status.md)] Documentation for -show-detached parameter
+
 2.2.2 (04/05/2015)
 ==================
 
