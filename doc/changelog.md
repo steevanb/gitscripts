@@ -45,3 +45,6 @@ master
 ------------------
 
 - [[gitstatus.sh](status.md)] Simple and colored format for git status, and try to find git repositories in sub directories (like vendor).
+
+
+[Back to index](../README.md)
