@@ -3,7 +3,7 @@
 
 - [[changelog.md](changelog.md)] Add changelog
 - [[status.sh](status.md)] Documentation for -show-detached parameter
-- [[deluntrackedbranch.sh](deluntrackedbranch.md)] Documentation for 
+- [[deluntrackedbranch.sh](deluntrackedbranch.md)] Add deluntrackedbranch.sh
 
 2.2.2 (2015-05-04)
 ------------------
