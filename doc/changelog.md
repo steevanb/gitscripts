@@ -1,8 +1,9 @@
-master
-------
+2.3 (2015-09-03)
+----------------
 
 - [[changelog.md](changelog.md)] Add changelog
 - [[status.sh](status.md)] Documentation for -show-detached parameter
+- [[deluntrackedbranch.sh](deluntrackedbranch.md)] Documentation for 
 
 2.2.2 (2015-05-04)
 ------------------

@@ -17,3 +17,5 @@ Available scripts
 [push.sh](doc/push.md) : push only the current branch to origin
 
 [rebase.sh](doc/rebase.md) : stash your changes if needed, fetch, rebase, and pop your changes if needed
+
+[deluntrackedbranch.sh](doc/deluntrackedbranch.md) : delete local branches who are deleted on remote
