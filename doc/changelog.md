@@ -1,4 +1,4 @@
-2.3 (2015-09-03)
+2.3.0 (2015-09-03)
 ----------------
 
 - [[changelog.md](changelog.md)] Add changelog
