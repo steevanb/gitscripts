@@ -1,7 +1,7 @@
 gitscripts
 ==========
 
-[![version](https://img.shields.io/badge/version-2.4.0-green.svg)](https://github.com/steevanb/sf2-form-utils/tree/2.4.0)
+[![version](https://img.shields.io/badge/version-2.4.0-green.svg)](https://github.com/steevanb/gitscripts/tree/2.4.0)
 
 Some bash scripts to help you using git.
 
