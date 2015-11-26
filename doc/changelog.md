@@ -1,3 +1,8 @@
+2.4.0 (2015-11-26)
+----------------
+
+- [[deluntrackedbranch.sh](deluntrackedbranch.md)] List untracked branch by default, use --force to really delete them
+
 2.3.0 (2015-09-03)
 ----------------
 
