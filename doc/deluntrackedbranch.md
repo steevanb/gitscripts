@@ -3,8 +3,8 @@ deluntrackedbranch.sh
 
 deluntrackedbranch.sh delete locales branches who are not tracked on remote (origin).
 
-Example
--------
+Examples
+--------
 ```
 # will only list untracked branches
 ./deluntrackedbranch.sh 
