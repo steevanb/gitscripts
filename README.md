@@ -1,7 +1,8 @@
 gitscripts
 ==========
 
-[![version](https://img.shields.io/badge/version-2.4.1-green.svg)](https://github.com/steevanb/gitscripts/tree/2.4.1)
+[![version](https://img.shields.io/badge/version-2.5.0-green.svg)](https://github.com/steevanb/gitscripts/tree/2.5.0)
+![Total Downloads](https://poser.pugx.org/steevanb/gitscripts/downloads)
 
 Some bash scripts to help you using git.
 
@@ -21,3 +22,5 @@ Available scripts
 [rebase.sh](doc/rebase.md) : stash your changes if needed, fetch, rebase, and pop your changes if needed
 
 [deluntrackedbranch.sh](doc/deluntrackedbranch.md) : delete local branches who are deleted on remote
+
+[renamebranch.sh](doc/renamebranch.md) : rename local branch and push change to origin
