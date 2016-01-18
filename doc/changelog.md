@@ -1,3 +1,8 @@
+2.5.0 (2015-01-18)
+------------------
+
+- [[renamebranch.sh](renamebranch.md)] Add renamebranch.sh, who rename local branch and push change to origin
+
 2.4.1 (2015-12-07)
 ------------------
 
