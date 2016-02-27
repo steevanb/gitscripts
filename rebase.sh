@@ -30,6 +30,8 @@ else
 fi
 
 if [ "$stash" == "ask" ] && [ "$countEditedFiles" -gt "0" ]; then
+    bash "$(dirname $0)/status.sh" -show-current-path-title=no -max-depth=1
+    echo ""
     ask "Repository contains unstaged changes. Do you want to stash them ? (Y/n)"
     read readStash
     if [ "$readStash" == "" ] || [ "$readStash" == "y" ] || [ "$readStash" == "Y" ]; then
@@ -49,4 +51,3 @@ if [ "$countEditedFiles" -gt "0" ] && [ "$stash" == "yes" ]; then
 fi
 
 echoOk
-exit 0
