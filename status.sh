@@ -32,13 +32,19 @@ function customGitStatus() {
 
     # title
     if [ $1 == $root ]; then
-        titleStr="Current path"
+        if [ $showCurrentPathTitle == true ]; then
+            titleStr="Current path"
+        else
+            titleStr=""
+        fi
     elif [ ${1:0:$rootLength} == $root ]; then
         titleStr="${1:$rootLength+1}"
     else
         titleStr="$1"
     fi
-    title "$titleStr"
+    if [ "$titleStr" != "" ]; then
+        title "$titleStr"
+    fi
 
     # header
     smallBlock "$blockColor" "$header"
@@ -77,7 +83,8 @@ paths=$root
 showLegend=true
 showUpToDate=false
 showDetached=true
-maxdepth=1000
+maxDepth=1000
+showCurrentPathTitle=true
 
 for param in $*; do
     # -path=[yes/no]
@@ -85,27 +92,31 @@ for param in $*; do
         paramValue="${param:6}"
         paths="${paramValue//\%pwd\%/$root}"
 
-    # -show-legend=[yes/no]
+    # -show-legend=[YES/no]
     elif [ $param = '-show-legend=no' ]; then
         showLegend=false
 
-    # -show-uptodate=[yes/no]
+    # -show-uptodate=[yes/NO]
     elif [ $param = '-show-uptodate=yes' ]; then
         showUpToDate=true
 
-    # -show-detached=[yes/no]
+    # -show-detached=[YES/no]
     elif [ $param = '-show-detached=no' ]; then
         showDetached=false
 
     # -recursive=[YES/no]
     elif [ ${param:0:11} = '-max-depth=' ]; then
-        maxdepth="${param:11}"
+        maxDepth="${param:11}"
+
+    # -show-current-path-title=[yes/NO]
+    elif [ $param = '-show-current-path-title=no' ]; then
+        showCurrentPathTitle=false
     fi
 done
 
 arPath=$(echo $paths | tr "," "\n")
 for path in $arPath; do
-    find -L $path -maxdepth $maxdepth -type d -name .git|while read; do
+    find -L $path -maxdepth $maxDepth -type d -name .git|while read; do
         gitStatus "$(dirname $REPLY)"
     done
 done
