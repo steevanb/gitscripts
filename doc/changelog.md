@@ -1,3 +1,10 @@
+2.6.0 (2016-02-27)
+------------------
+
+- [[status.sh](status.md)] Add -show-current-path-title parameters
+- [[rebase.sh](rebase.md)] Call status.sh with -show-current-path-title=no -max-depth=1 parameters
+
+
 2.5.0 (2015-01-18)
 ------------------
 

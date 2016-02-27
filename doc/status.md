@@ -28,6 +28,10 @@ Parameters
 -max-depth=1000
     Descend at most X levels of directories
     1000 by default
+
+-show-current-path-title=[YES/no]
+    Show "Current path" title when current path has modified files
+    yes by default
 ```
 
 Example
