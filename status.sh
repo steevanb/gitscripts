@@ -16,13 +16,24 @@ function customGitStatus() {
     allFiles="$(git status --porcelain)"
 
     # commits not pushed
-    commitsToPush=$(git log origin/$gitBranch..$gitBranch)
-    if [ "$commitsToPush" == "" ]; then
+    commitsToPush=$(git log origin/$gitBranch..$gitBranch 2>/dev/null)
+    gitLogError=$?
+    if [ "$gitLogError" == "128" ]; then
+        header="$header - Branch does not exist on origin"
+        blockColor=43
+        blockFontColor=30
+    elif [ "$gitLogError" != "0" ]; then
+        header="$header - git log error : $gitLogError"
+        blockColor=41
+        blockFontColor=37
+    elif [ "$commitsToPush" == "" ]; then
         header="$header - No push needed"
         blockColor=42
+        blockFontColor=37
     else
         header="$header - Commits needs to be pushed"
         blockColor=43
+        blockFontColor=30
     fi
 
     # nothing to commit / push, don't show this block
@@ -47,7 +58,7 @@ function customGitStatus() {
     fi
 
     # header
-    smallBlock "$blockColor" "$header"
+    smallBlock "$blockColor" "$header" "$blockFontColor"
     if [ $showLegend = true ]; then 
         echo -e "[A] Added [M] Modified [D] Deleted [R] Renamed [C] Copied [U] Updated but unmerged [??] Untracked [\033[32mstagged\033[00m] [\033[31mnot stagged\033[00m]"
     fi
@@ -104,7 +115,7 @@ for param in $*; do
     elif [ $param = '-show-detached=no' ]; then
         showDetached=false
 
-    # -recursive=[YES/no]
+    # -max-depth=[YES/no]
     elif [ ${param:0:11} = '-max-depth=' ]; then
         maxDepth="${param:11}"
 

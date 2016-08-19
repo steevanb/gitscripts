@@ -1,3 +1,12 @@
+2.6.1 (2016-08-19)
+------------------
+
+- [[status.sh](status.md)] Hide git log errors
+- [[status.sh](status.md)] Add yellow message "Branch does not exist on origin"
+- [[status.sh](status.md)] Add red message with git log error code when error occured
+- Add $fonrColor parameter to smallBlock()
+- [[status.sh](status.md)] Change font color from white to black for yellow messages (Commits needs to be pushed and Branch does not exist on origin)
+
 2.6.0 (2016-02-27)
 ------------------
 

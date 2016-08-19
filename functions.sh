@@ -34,7 +34,12 @@ function execCmdNoEcho() {
 }
 
 function smallBlock() {
-    echo -en "\033[$1m\033[1;37m  $2  \033[0m\n"
+    if [ "$3" == "" ]; then
+        fontColor="37"
+    else
+        fontColor="$3"
+    fi
+    echo -en "\033[$1m\033[1;${fontColor}m  $2  \033[0m\n"
 }
 
 function title() {

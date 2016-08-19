@@ -1,7 +1,7 @@
 gitscripts
 ==========
 
-[![version](https://img.shields.io/badge/version-2.6.0-green.svg)](https://github.com/steevanb/gitscripts/tree/2.6.0)
+[![version](https://img.shields.io/badge/version-2.6.1-green.svg)](https://github.com/steevanb/gitscripts/tree/2.6.1)
 ![Total Downloads](https://poser.pugx.org/steevanb/gitscripts/downloads)
 
 Some bash scripts to help you using git.
