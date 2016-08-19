@@ -9,6 +9,16 @@ function realGitStatus() {
     git status
 }
 
+function refreshGitLog() {
+    commitsToPush=$(git log origin/$gitBranch..$gitBranch 2>/dev/null)
+    gitLogError=$?
+    # if local copy of origin is not fresh, $commitsToPush will contains some commits
+    # who are already pushed, so refresh local copy of origin
+    if [ "$gitLogError" == "0" ] && [ "$commitsToPush" != "" ]; then
+        git fetch 1>/dev/null 2>/dev/null
+    fi
+}
+
 function customGitStatus() {
     header="$gitBranch"
 
@@ -16,6 +26,7 @@ function customGitStatus() {
     allFiles="$(git status --porcelain)"
 
     # commits not pushed
+    refreshGitLog
     commitsToPush=$(git log origin/$gitBranch..$gitBranch 2>/dev/null)
     gitLogError=$?
     if [ "$gitLogError" == "128" ]; then
