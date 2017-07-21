@@ -1,19 +1,19 @@
 deltag.sh
 =========
 
-deltag.sh delete a tag, and push only this deleted tag.
+deltag.sh delete tags, and push only this deleted tags.
 
 Parameters
 ----------
 ```
-$tag
-    First parameter is tag name, most of the time a version number (like 1.0.0).
+$tag1 $tag2 $tag3
 ```
 
 Example
 -------
 ```
 ./deltag.sh 1.0.0
+./deltag.sh 1.0.1 1.0.2
 ```
 
 [Back to index](../README.md)

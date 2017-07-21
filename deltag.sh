@@ -6,10 +6,10 @@ if [ $# == 0 ]; then
     cancelScript "You must pass tag name as first parameter."
 fi
 
-tag=$1
-
-title "Delete tag $tag"
-execCmd "git tag -d $tag"
-execCmd "git push origin :refs/tags/$tag"
+for tag in $*; do
+    title "Delete tag $tag"
+    execCmd "git tag -d $tag"
+    execCmd "git push origin :refs/tags/$tag"
+done
 
 echoOk
