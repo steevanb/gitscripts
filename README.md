@@ -25,3 +25,5 @@ Available scripts
 [deluntrackedbranch.sh](doc/deluntrackedbranch.md) : delete local branches who are deleted on remote
 
 [renamebranch.sh](doc/renamebranch.md) : rename local branch and push change to origin
+
+[refresh.sh](doc/refresh.md) : pull the origin main branch and rebase from it on a target branch
