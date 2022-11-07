@@ -44,7 +44,7 @@ if [ "$countEditedFiles" -gt "0" ] && [ "$stash" == "yes" ]; then
 fi
 
 execCmd "git fetch"
-execCmd "git rebase -p $rebaseFrom"
+execCmd "git rebase --rebase-merges $rebaseFrom"
 
 if [ "$countEditedFiles" -gt "0" ] && [ "$stash" == "yes" ]; then
     execCmd "git stash pop"

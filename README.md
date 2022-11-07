@@ -1,7 +1,7 @@
 gitscripts
 ==========
 
-[![version](https://img.shields.io/badge/version-2.7.0-green.svg)](https://github.com/steevanb/gitscripts/tree/2.7.0)
+[![version](https://img.shields.io/badge/version-3.0.0-green.svg)](https://github.com/steevanb/gitscripts/tree/3.0.0)
 ![Lines](https://img.shields.io/badge/code%20lines-665-green.svg)
 ![Total Downloads](https://poser.pugx.org/steevanb/gitscripts/downloads)
 

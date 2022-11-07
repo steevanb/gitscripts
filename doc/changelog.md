@@ -1,3 +1,7 @@
+### [3.0.0](../../../compare/2.7.0...3.0.0) - 2022-11-07
+
+- [rebase.sh](rebase.md) Change `git rebase -p` to `git rebase --rebase-merges` (`-p` has been removed in latest git version)
+
 ### [2.7.0](../../../compare/2.6.1...2.7.0) - 2017-07-21
 
 - [deltag.sh](deltag.md) Now delete how much tags as you need
